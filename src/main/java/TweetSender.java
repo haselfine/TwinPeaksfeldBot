@@ -1,14 +1,15 @@
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
-
 import java.io.File;
 
 public class TweetSender {
 
-    private static final String CONSUMER_KEY = "";
-    private static final String CONSUMER_SECRET = "";
-    private static final String ACCESS_TOKEN = "";
-    private static final String ACCESS_TOKEN_SECRET = "";
+
+    final static private String CONSUMER_KEY = System.getenv("CONSUMER_KEY");
+    final static private String CONSUMER_SECRET = System.getenv("CONSUMER_SECRET");
+    final static private String ACCESS_TOKEN = System.getenv("ACCESS_TOKEN");
+    final static private String ACCESS_TOKEN_SECRET = System.getenv("ACCESS_TOKEN_SECRET");
+
 
     public static Twitter instantiateTwitter(){
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
@@ -21,9 +22,11 @@ public class TweetSender {
         return twitter;
     }
 
-    public static void sendTweet(String tweetString, File file) throws TwitterException {
+    public static void sendTweet(String tweetString, String path) throws TwitterException {
         Twitter twitter = instantiateTwitter();
         StatusUpdate statusUpdate = new StatusUpdate(tweetString);
+        String completePath = "src/TwinPeaks/" + path;
+        File file = new File(completePath);
         statusUpdate.setMedia(file);
         twitter.updateStatus(statusUpdate);
         System.out.println("Tweeted status: " + statusUpdate);

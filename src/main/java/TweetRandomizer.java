@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+
 public class TweetRandomizer {
+
+
     public static void main(String[] args) throws TwitterException {
         List<String> tweetList = new ArrayList<>();
         tweetList.add("“I love a good nap. Sometimes it’s the only thing getting me out of bed in the morning.”");
@@ -46,22 +50,23 @@ public class TweetRandomizer {
 
         Random random = new Random();
         String stringTweet = tweetList.get(random.nextInt(tweetList.size()));
-        File file = getRandomPicture();
-        if(stringTweet != null && file != null){
-            TweetSender.sendTweet(stringTweet, file);
+        String randomPhotoPath = getRandomPicture();
+        if(stringTweet != null && randomPhotoPath != null){
+            System.out.println("Sending tweet: " + stringTweet + ". And file: " + randomPhotoPath);
+            TweetSender.sendTweet(stringTweet, randomPhotoPath);
         }
     }
 
-    private static File getRandomPicture() {
+    private static String getRandomPicture() {
 
 
         Random random = new Random();
-        File sourceFolder = new File("TwinPeaks");
+        File sourceFolder = new File("src/TwinPeaks");
         String[] fileList = sourceFolder.list();
         if(fileList != null){
             String randomPhotoPath = fileList[random.nextInt(fileList.length)];
-            File randomPhoto = new File(randomPhotoPath);
-            return randomPhoto;
+
+            return randomPhotoPath;
         }
         return null;
 
