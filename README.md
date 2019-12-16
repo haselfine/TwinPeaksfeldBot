@@ -28,6 +28,8 @@ Heroku requires a file called a Procfile to instruct it to run different process
 one is a "web" process, which would run a website for people to navigate. My program, however, needed a "worker" background process to
 simply run the program without any user interaction.
 
+Another file required by Heroku was a system.properties file which tells it which version of Java the program runs on.
+
 I also needed to use a scheduler add-on in Heroku for it to run on a regular schedule, which required a command-line prompt to tell it what to run.
 In order to make that command simpler and include the Twitter4J library, I added a Maven assembly plugin by Codehaus.Mojo which packaged
 everything into the target file. That made it so I could give my main process the name "worker" and simply tell the command-line
