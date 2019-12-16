@@ -11,18 +11,15 @@ public class TweetRandomizer {
 
     public static void main(String[] args) throws TwitterException {
         List<String> tweetList = setQuotes();
-
-
-        Random random = new Random();
-        String stringTweet = tweetList.get(random.nextInt(tweetList.size()));
+        String stringTweet = getRandomQuote(tweetList);
         String randomPhotoPath = getRandomPicture();
-        if(stringTweet != null && randomPhotoPath != null){
-            System.out.println("Sending tweet: " + stringTweet + ". And file: " + randomPhotoPath);
+        if(stringTweet != null && randomPhotoPath != null){ //make sure no nulls are passed
+            System.out.println("Sending tweet: " + stringTweet + ". And file: " + randomPhotoPath); //prints which quote/picture are being sent to tweet
             TweetSender.sendTweet(stringTweet, randomPhotoPath);
         }
     }
 
-    private static List<String> setQuotes() {
+    private static List<String> setQuotes() { //I just added the quotes to a list because it's easier to manage them this way.
         List<String> tweetList = new ArrayList<>();
         tweetList.add("“I love a good nap. Sometimes it’s the only thing getting me out of bed in the morning.”");
         tweetList.add("“Why is nice bad? What kind of a sick society are we living in when nice is bad?”");
@@ -102,18 +99,23 @@ public class TweetRandomizer {
         return tweetList;
     }
 
+    private static String getRandomQuote(List<String> tweetList) {
+        Random random = new Random();
+        return tweetList.get(random.nextInt(tweetList.size()));
+    }
+
     private static String getRandomPicture() {
 
 
         Random random = new Random();
-        File sourceFolder = new File("src/TwinPeaks");
-        String[] fileList = sourceFolder.list();
-        if(fileList != null){
-            String randomPhotoPath = fileList[random.nextInt(fileList.length)];
-
-            return randomPhotoPath;
+        File sourceFolder = new File("src/TwinPeaks"); //folder of pictures is located under this path
+        String[] fileList = sourceFolder.list(); //lists all files in folder
+        if(fileList != null){ //as long as the folder has files...
+            String randomPhotoFile = fileList[random.nextInt(fileList.length)]; //choose a random number between 0 and the size of the file list, choose that number file
+            String completePath = "src/TwinPeaks/" + randomPhotoFile; //add file name to end of path
+            return completePath; //send back to main
         }
-        return null;
+        return null; //if it fails, return null
 
     }
 }
