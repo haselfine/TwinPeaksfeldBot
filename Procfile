@@ -1,1 +1,1 @@
-worker: node TweetRandomizer
+worker: sh target/bin/worker
