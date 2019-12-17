@@ -1,1 +1,1 @@
-worker: sh target/bin/reply
+worker: sh target/bin/worker

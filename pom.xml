@@ -28,11 +28,11 @@
                     <programs>
                         <program>
                             <mainClass>TweetRandomizer</mainClass>
-                            <name>worker</name>
+                            <name>random</name>
                         </program>
                         <program>
                             <mainClass>NotificationChecker</mainClass>
-                            <name>reply</name>
+                            <name>worker</name>
                         </program>
                     </programs>
                 </configuration>
