@@ -47,7 +47,7 @@ public class NotificationChecker {
 
     private static void reply(Status status){
         String tweetedAtMe = "@" + status.getUser().getScreenName();
-        String completeReply = replyStatus + tweetedAtMe + "?”";
+        String completeReply = tweetedAtMe + replyStatus + tweetedAtMe + "?”";
         long inReply = status.getId();
         StatusUpdate statusUpdate = new StatusUpdate(completeReply);
         statusUpdate.setInReplyToStatusId(inReply);
