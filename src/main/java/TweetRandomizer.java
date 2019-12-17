@@ -23,7 +23,7 @@ public class TweetRandomizer {
         }
     }
 
-    private static List<String> getQuotes(){
+    private static List<String> getQuotes(){ //retrieves list of quotes from text file
         String fileName = "seinfeldQuotes.txt";
         List<String> seinfeldQuoteList = new ArrayList<>();
         try(FileReader reader = new FileReader(fileName);

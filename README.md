@@ -4,11 +4,14 @@ Created by Ben Haseltine
 
 This program sends a tweet to twitter.com/TwinPeaksfeld which contains a random quote from Seinfeld alongside 
 a random picture from Twin Peaks.
+
+The program now replies to users who tweet at it.
+
 It uses the Twitter4J Java library to interact with the Twitter API.
 
 ***In order to use this program, you will need me to send you a zip file containing 4 authorization keys.***
 
-***You will need to add these into the "environment variables" field under "edit configuration" of the class TweetRandomizer.***
+***You will need to add these into the "environment variables" field under "edit configuration" of the classes TweetRandomizer and NotificationChecker.***
 
 ***When adding these environment variables, make sure there are no leading or trailing spaces for any of the keys. It will not work if there are any!***
 
