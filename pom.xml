@@ -30,6 +30,10 @@
                             <mainClass>TweetRandomizer</mainClass>
                             <name>worker</name>
                         </program>
+                        <program>
+                            <mainClass>NotificationChecker</mainClass>
+                            <name>reply</name>
+                        </program>
                     </programs>
                 </configuration>
                 <executions>
